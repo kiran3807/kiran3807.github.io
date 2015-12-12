@@ -1,14 +1,10 @@
 app.directive('kSidebar',function(){
 
-	var render = function(element,obj,display){
-	
-		if(obj===null){
-			return;
-		}
+	var render = function(element,obj,isSubmenu){
 					
 		var parent = angular.element("<ul></ul>");
 		
-		if(display && typeof obj === "object"){
+		if(!isSubmenu && typeof obj === "object"){
 			parent = angular.element("<ul class=\"sidebar-nav\"></ul>");
 		}
 		else if(typeof obj === "object"){
@@ -31,18 +27,32 @@ app.directive('kSidebar',function(){
 				else if(typeof obj[key] === "object"){
 				
 						templateString = "<li>"+key+"</li>";
-						submenuTemplateString = "<div class=\"sub-wrapper\""+"</div>";
+						submenuTemplateString = "<div class=\"sub-wrapper\">"+"</div>";
 						submenuTemplate = angular.element(submenuTemplateString);
 						template = angular.element(templateString);
-						
-						render(submenuTemplate,obj[key],false);
-						
+					
+						render(submenuTemplate,obj[key],true);
 						template.append(submenuTemplate);
+						
+						template.on("mouseenter",function(){
+							angular.element(this).children(".sub-wrapper").css("visibility","visible");
+						});
+						template.on("mouseleave",function(){
+							angular.element(this).children(".sub-wrapper").css("visibility","hidden");
+						});
+						
 				}
 				parent.append(template);
 			}
 			element.append(parent);
 		};
+	
+	var setInitPosition = function(element){
+		var submenus = element.children(".sidebar-nav").children("li").children("div");
+		console.log(submenus);
+		var width = element.css("width");
+		submenus.css("left",width);
+	}
 		
 	var ddo = {};
 	ddo.restrict = 'E';
@@ -57,7 +67,8 @@ app.directive('kSidebar',function(){
 		element.replaceWith(elm);
 			
 		var link = function(scope,element,attrs){
-			render(element,scope.options,true);
+			render(element,scope.options,false);
+			setInitPosition(element);
 		}
 		return link;
 	
