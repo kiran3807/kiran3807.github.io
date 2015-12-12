@@ -1,12 +1,24 @@
 app.directive('kSidebar',function(){
 
 	var render = function(element,obj,display){
+	
+		if(obj===null){
+			return;
+		}
 					
 		var parent = angular.element("<ul></ul>");
-		var template,templateString;
+		
+		if(display && typeof obj === "object"){
+			parent = angular.element("<ul class=\"sidebar-nav\"></ul>");
+		}
+		else if(typeof obj === "object"){
+			parent = angular.element("<ul class=\"sub-nav\"></ul>");
+		}
+			
+		var template,templateString,submenuTemplate,submenuTemplateString;
 			for (var key in obj){
 					
-				if(typeof obj[key] === null){
+				if( obj[key] === null){
 							
 							templateString = "<li>"+key+"</li>";
 							template = angular.element(templateString);
@@ -17,10 +29,15 @@ app.directive('kSidebar',function(){
 							template = angular.element(templateString);
 				}
 				else if(typeof obj[key] === "object"){
-						
+				
 						templateString = "<li>"+key+"</li>";
+						submenuTemplateString = "<div class=\"sub-wrapper\""+"</div>";
+						submenuTemplate = angular.element(submenuTemplateString);
 						template = angular.element(templateString);
-						render(template,obj[key],false);
+						
+						render(submenuTemplate,obj[key],false);
+						
+						template.append(submenuTemplate);
 				}
 				parent.append(template);
 			}
@@ -36,7 +53,7 @@ app.directive('kSidebar',function(){
 	}
 	ddo.scope=scope;
 	ddo.compile = function(element,attrs){
-		var elm = angular.element('<div></div>');
+		var elm = angular.element('<div class="sidebar-wrapper"></div>');
 		element.replaceWith(elm);
 			
 		var link = function(scope,element,attrs){
@@ -47,21 +64,4 @@ app.directive('kSidebar',function(){
 	};
 	return ddo;
 
-	/*return{
-		restrict : 'E',
-		scope : 
-			{ 
-				options : '=options',
-				size : '=size',
-				color : '=color'
-			},
-		compile : function(element,attrs){
-			var elm = angular.element('<div></div>');
-			element.replaceWith(elm);
-			
-			var link = function(scope,element,attrs){
-			}
-			return link;
-		}
-	};*/
 })
