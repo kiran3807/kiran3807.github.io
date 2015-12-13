@@ -54,6 +54,7 @@ text-decoration: none;
 	padding-bottom:10px;
 	visibility : hidden; /*this is default value */
 	border-radius: 3px;
+	display:inline;     /*this is inorder to display the submenus adjacent to other parent list element */
 }
 
 .sub-nav{
