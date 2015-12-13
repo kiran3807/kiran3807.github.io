@@ -22,11 +22,12 @@
 .sidebar-nav li {
 	text-indent: 20px;
 	line-height: 40px;
+	color: #999999
 }
 .sidebar-nav li a {
 	display: block;
 	text-decoration: none;
-	color: #999999;
+	color: rgba(220,220,220,1);
 }
 .sidebar-nav li:hover {
 	text-decoration: none;
