@@ -5,7 +5,7 @@ app.factory('configService',['$http',function($http){
 	
 		var configPromise = $http({
 		method : 'GET',
-		url : 'config'
+		url : 'siteconfig'
 	}).then(function(result){
 		
 		return{

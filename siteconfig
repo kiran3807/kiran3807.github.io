@@ -1,4 +1,4 @@
 {
-	numPosts : 0
-	templatesLocation : 'html/templates/'
+	"numPosts" : 0,
+	"templatesLocation" : "html/templates/"
 }
