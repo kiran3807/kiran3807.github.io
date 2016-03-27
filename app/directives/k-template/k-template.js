@@ -26,8 +26,9 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 		
 		scope.postIndex = config.numPosts;
 		if(scope.postIndex < 1){
-			var msg = "No posts to display";
+			var msg = "<p>No posts to display</p>";
 			endDiv.before(msg);
+			return;
 		}
 		if( isEndVisible(endDiv,angular.element($window)) ){
 			var promise = infScroll.getTemplate(config.templatesLocation+scope.postIndex+".html");
