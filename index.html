@@ -14,66 +14,21 @@
     <script src="app/app.js"></script>
     <script src="app/controllers/mainCtrl.js"></script>
    	<link rel="stylesheet" href="css/main.css">
-    <!-- k-sidebar files start -->
+    <!-- directives start -->
     <script src="app/directives/k-sidebar/k-sidebar.js"></script>
     <link rel="stylesheet" href="app/directives/k-sidebar/sidebarStyles.css">
-    <!-- k-sidebar files end -->
-    
+ 
+    <script src="app/directives/k-template/k-template.js"></script>
+    <!-- directives end-->
+ 	<!-- services start -->
+ 	<script src="app/services/infScroll/infScroll.js"></script>
+ 	<script src="app/services/configService/configService.js"></script>
+ 	<!-- services end -->
 </head>
 <body  ng-controller="mainCtrl">
 	<k-sidebar options=dummy></k-sidebar>
-	
 	<div class="container-fluid main-body">
-	
-		<div class="jumbotron jumbotron-style">
-			<div class="container">
-				<h1>Hello World</h1>
-			</div>
-		</div>
-		
-		<div class="row" >
-			<div class="col-md-12">
-				<p>
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-			</div>
-		</div>
+	<k-template></k-template>
 	</div>
 </body>
 

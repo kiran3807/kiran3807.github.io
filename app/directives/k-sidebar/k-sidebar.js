@@ -49,7 +49,6 @@ app.directive('kSidebar',function(){
 	
 	var setInitPosition = function(element){
 		var submenus = element.children(".sidebar-nav").children("li").children("div");
-		console.log(submenus);
 		var width = element.css("width");
 		submenus.css("left",width);
 	}
