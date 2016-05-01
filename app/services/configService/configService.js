@@ -5,7 +5,7 @@ app.factory('configService',['$http',function($http){
 	
 		var configPromise = $http({
 		method : 'GET',
-		url : '/siteconfig.json'
+		url : 'siteconfig.json' // change to /siteConfig later on
 	});
 	
 		return configPromise;
@@ -13,3 +13,5 @@ app.factory('configService',['$http',function($http){
 	return configService ;
 
 }]);
+
+//TODO change siteConfig.js value for numPosts to 0 once done testing on the local

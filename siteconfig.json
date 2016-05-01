@@ -1,4 +1,12 @@
 {
-	"numPosts" : 2, 
-	"templatesLocation" : "html/templates/"
+	"dummyTopic1" :
+		{
+		"numPosts" : 2, 
+		"templatesLocation" : "html/templates/"
+		},
+	"dummyTopic2" :
+		{
+		"numPosts" : 1, 
+		"templatesLocation" : "html/templates/topics/"
+		}
 }

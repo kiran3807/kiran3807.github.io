@@ -11,7 +11,17 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 		
 	}
 	
-	var afterConfigLoaded = function(config,scope,endDiv){
+	var afterConfigLoaded = function(configObj,scope,endDiv){
+		
+		var config = {};
+		console.log(scope.topic);//debug
+		if(configObj.hasOwnProperty(scope.topic)){
+			config = configObj[scope.topic];
+		}else{
+			var msg = "<p>No topics to display</p>";
+			endDiv.before(msg);
+			return;
+		}
 		
 		var infScrollSuccess = function(result){
 			var template = result.data;
@@ -48,7 +58,9 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 		});
 	}
 	
-	ddo.scope = {};
+	ddo.scope = {
+		topic : '='
+	};
 	ddo.restrict = 'E';
 	ddo.compile = function(element,attrs){
 		element.replaceWith('<div id="posts"><hr id=\"end\"></hr></div>');

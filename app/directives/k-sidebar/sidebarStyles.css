@@ -67,16 +67,25 @@ text-decoration: none;
 .sub-nav li {
 	color:rgba(200,200,200,1);
 }
+
 .sub-nav li a {
 	color:rgba(220,220,220,1);;
+}
+
+.sub-nav .function{
+	cursor:pointer;
 }
 
 .sub-nav li:hover{
 	background:black;
 	color:white;
 }
-.sub-nav li a:hover{
+.sub-nav .function:hover {
 	background:blue;
+	color:white;
+}
+.sub-nav li a:hover{
+	background:rgb(53, 232, 242);
 	color:white;
 }
 

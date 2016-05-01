@@ -1,6 +1,6 @@
-app.directive('kSidebar',function(){
+app.directive('kSidebar',['$compile',function($compile){
 
-	var render = function(element,obj,isSubmenu){
+	var render = function(element,obj,isSubmenu,scope){
 					
 		var parent = angular.element("<ul></ul>");
 		
@@ -12,8 +12,7 @@ app.directive('kSidebar',function(){
 		}
 			
 		var template,templateString,submenuTemplate,submenuTemplateString;
-			for (var key in obj){
-					
+			for (var key in obj){	
 				if( obj[key] === null){
 							
 							templateString = "<li>"+key+"</li>";
@@ -24,6 +23,15 @@ app.directive('kSidebar',function(){
 							templateString = "<li><a href=\""+obj[key]+"\">"+key+"</a></li>";
 							template = angular.element(templateString);
 				}
+				else if(typeof obj[key] === "function"){
+					var receivedFunction = obj[key];
+					scope[key] = function(){
+						receivedFunction();
+					}
+					templateString = "<li class=\"function\" ng-click=\""+key+"()\">"+key+"</li>";
+					compiledTemplate = $compile(templateString)(scope); 
+					template = angular.element(compiledTemplate);
+				}
 				else if(typeof obj[key] === "object"){
 				
 						templateString = "<li>"+key+"</li>";
@@ -31,7 +39,7 @@ app.directive('kSidebar',function(){
 						submenuTemplate = angular.element(submenuTemplateString);
 						template = angular.element(templateString);
 					
-						render(submenuTemplate,obj[key],true);
+						render(submenuTemplate,obj[key],true,scope);
 						template.append(submenuTemplate);
 						
 						template.on("mouseenter",function(){
@@ -66,7 +74,7 @@ app.directive('kSidebar',function(){
 		element.replaceWith(elm);
 			
 		var link = function(scope,element,attrs){
-			render(element,scope.options,false);
+			render(element,scope.options,false,scope);
 			setInitPosition(element);
 		}
 		return link;
@@ -74,4 +82,4 @@ app.directive('kSidebar',function(){
 	};
 	return ddo;
 
-})
+}])
