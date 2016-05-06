@@ -1,12 +1,12 @@
 {
-	"dummyTopic1" :
+	"technical" :
 		{
 		"numPosts" : 2, 
-		"templatesLocation" : "html/templates/"
+		"templatesLocation" : "html/technical/posts/"
 		},
-	"dummyTopic2" :
+	"general" :
 		{
 		"numPosts" : 1, 
-		"templatesLocation" : "html/templates/topics/"
+		"templatesLocation" : "html/general/posts/"
 		}
 }
