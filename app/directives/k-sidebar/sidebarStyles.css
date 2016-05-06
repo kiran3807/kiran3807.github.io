@@ -29,6 +29,9 @@
 	text-decoration: none;
 	color: rgba(220,220,220,1);
 }
+.sidebar-nav .function{
+	cursor:pointer;
+}
 .sidebar-nav li:hover {
 	text-decoration: none;
 	color: #fff;
@@ -80,14 +83,14 @@ text-decoration: none;
 	background:black;
 	color:white;
 }
-.sub-nav .function:hover {
+/*.sub-nav .function:hover {
 	background:blue;
 	color:white;
 }
 .sub-nav li a:hover{
 	background:rgb(53, 232, 242);
 	color:white;
-}
+}*/
 
 .sub-nav li a:active,
 .sub-nav li a:focus {

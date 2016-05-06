@@ -24,13 +24,10 @@ app.directive('kSidebar',['$compile',function($compile){
 							template = angular.element(templateString);
 				}
 				else if(typeof obj[key] === "function"){
-					var receivedFunction = obj[key];
-					scope[key] = function(){
-						receivedFunction();
-					}
+					scope[key] = obj[key];
 					templateString = "<li class=\"function\" ng-click=\""+key+"()\">"+key+"</li>";
 					compiledTemplate = $compile(templateString)(scope); 
-					template = angular.element(compiledTemplate);
+					template = compiledTemplate;
 				}
 				else if(typeof obj[key] === "object"){
 				
