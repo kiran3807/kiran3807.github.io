@@ -1,12 +1,35 @@
-app.controller('mainCtrl',['$scope',function($scope){
+app.controller('mainCtrl',['$scope','$location',function($scope,$location){
 
-	$scope.message = "hello world";
-	var kiran = function(){
-		console.log("har har har");
+	var hyperlinks = {
+		general :"general",
+		technical :"technical",
+		home : "/"
 	}
 	
-	$scope.dummy = { a :null , b: {heracles:null,hercules:null},c:{h:null,k:null},d:{ e:kiran,f:null,g:"http://facebook.com",h:{i:null,j:null} },kiran:"http://www.facebook.com" };
+	var openGeneral = function(){
+		$location.url(hyperlinks.general);
+	}
 	
-	$scope.topic = "dummyTopic1";
-
-}])
+	var openTechnical = function(){
+		$location.url(hyperlinks.technical);
+	}
+	
+	var openHomePage = function(){
+		$location.url(hyperlinks.home);
+	}
+	
+	var foo = function(){
+		console.log('foo');
+	}
+	
+	var bar = function(){
+		console.log('bar');
+	}
+	/*
+	 * The reason sideMenu object is at the last ,is that if we put it before any
+	 * of the function declarations above, instead of throwing errors it will simply
+	 * accept the function name as function declarations are hoisted. However undefined will
+	 * be passed to the k-sidebar directive as function definitions are not hoisted
+	 */
+	$scope.sideMenu = { general : openGeneral , technical : openTechnical, home : openHomePage ,k:foo,i :{ l:bar}};
+}]);

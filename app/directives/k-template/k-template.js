@@ -59,7 +59,7 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 	}
 	
 	ddo.scope = {
-		topic : '='
+		topic : '@'
 	};
 	ddo.restrict = 'E';
 	ddo.compile = function(element,attrs){
