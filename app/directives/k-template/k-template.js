@@ -1,4 +1,4 @@
-app.directive('kTemplate',['$compile','infScroll','$document','$window','configService',function($compile,infScroll,$document,$window,configService){
+app.directive('kTemplate',['$compile','infScroll','$document','$window','configService','$rootScope',function($compile,infScroll,$document,$window,configService,$rootScope){
 	
 	var ddo = {};
 	//both element and window are jquery elements
@@ -14,7 +14,6 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 	var afterConfigLoaded = function(configObj,scope,endDiv){
 		
 		var config = {};
-		console.log(scope.topic);//debug
 		if(configObj.hasOwnProperty(scope.topic)){
 			config = configObj[scope.topic];
 		}else{
@@ -25,8 +24,11 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 		
 		var infScrollSuccess = function(result){
 			var template = result.data;
+			var newScope = $rootScope.$new();
+			var compiledTemplate = $compile(template)(newScope);
 			var status = result.status;
-			endDiv.before(result.data);
+			endDiv.before(compiledTemplate);
+			$rootScope.$emit('kTemplateCompiled');
 		}
 	
 		var infScrollFailure = function(errResponse){
