@@ -11,6 +11,11 @@ app.config(function($routeProvider){
 		})
 		.when('/technical',{
 			templateUrl : 'html/technical/home.html'
+		})
+		.when('/:category/:postId',{
+		    templateUrl : function(params){
+		        return '/html/'+params.category+'/posts/'+params.postId+'.html';
+		    }
 		});
 });
 
