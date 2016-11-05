@@ -1,49 +1,87 @@
-<div class="jumbotron jumbotron-style">
+<div>
+    <div class="jumbotron jumbotron-style">
 			<div class="container">
-				<h1> The first POST </h1>
+				<h1> The ClassDefNotFound BLUES </h1>
 			</div>
-		</div>
-		<hr></hr>
-		<div class="row" >
-			<div class="col-md-12">
-				<p>
+	</div>
+    <p>
+	    <code>ClassDefNotFound</code> errors are somewhat a rite of passage for novice java programmers. I'v had my share while trying to understand how javac looks up the classes while compiling. The first step to this is to understand how import statement works.
+    </p>
+    <p>
+	    <strong>The import statement</strong>
+    </p>
+    <p>The import statement is actually just syntactic sugar. It is used mainly to save typing effort. Say we want to use the 
+	    <code>java.util.ArrayList</code> in our program. typing the fully qualified name of the class every time we need to use it is exasparating. So what we do instead is to simply type import
+	    <code> java.util.ArraList</code> . This way whenever we refer to 
+	    <code>ArrayList</code> the compiler implicitly replaces it with its fully qualified name. The downside is that you can't create your own class named 
+	    <code>ArrayList</code>. what a tragedy !
+    </p>
+    <p>
+	    <strong>How javac searches for files to compile</strong>
+    </p>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
+    <code gist-embed data-gist-id="'e85a1d560986dc5c3fa62d8831ed514d'" data-gist-line="'2-4'"></code>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
+    <p>The source shown above is in the file 
+	    <code>Superman.java</code> inside the directory 
+	    <code>myProjects </code>and its also the current directory. When we try to compile the file using javac, Initially it looks for the file in its classpath. classpath is nothing but a list of all the directories where source files will be searched by the javac. It is represented by the 
+	    <code>$CLASSPATH</code> environment variable. By default the current directory is included in the class path. the rest can be set by using the javac -classpath option. So in the current example Superman.java is successfully found and compiled.
+    </p>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
+    <code gist-embed data-gist-id="'e85a1d560986dc5c3fa62d8831ed514d'" data-gist-line="'1-11'"></code>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-				
-				<p>
+    <p>The above code is in the file 
+	    <code>Metropolis.java</code> in the directory 
+	    <code>MyProjects</code>. Its also the current directory. So now when you try to compile the file 
+	    <code>Metropolis.java</code>, it finds a reference to the class 
+	    <code>NewGods.Darkseid</code> . Here comes the intresting part : 
+	    <strong>it searches for the file 
+		    <code>Darkseid.java</code> in the directory 
+		    <code>NewGods</code>
+	    </strong>.
+    </p>
+    <h3>Whenever an external class reference is encountered, the java compiler searches for the class in a file sharing the same name as the external class on the class path.</h3>
+    <p>This is why its common practice to put classes in the files with the same name. Technically speaking I can put a class
+	    <code> A</code> and 
+	    <code>B</code> in a file named 
+	    <code>myFile.java.</code> It will compile just fine. However this is only good as long as the classes
+	    <code> A</code> and 
+	    <code>B</code> are interdependent and reference each other. Good luck compiling a file that references these classes externally !
+    </p>
+    <p>Also note the fact that its not neccessary that directory 
+	    <code>NewGods</code> be in the directory 
+	    <code>MyProjects</code>. It is also valid if the 
+	    <code>NewGods</code> folder was inside any of the directories mentioned in the class path. So say we had referenced another class 
+	    <code>Orion</code>, which was in the folder NewGods. However this 
+	    <code>NewGods</code> folder is inside the 
+	    <code>home</code> directory and 
+	    <code>home</code> is also present in the class path. The case is valid and javac would still be able to resolve the reference to the class 
+	    <code>Orion</code>. Infact this is one way how packages and directories differ from each other. Savvy ?
+    </p>
+    <p>
+	    <strong>Public classes and source files</strong>
+    </p>
+    <p>consider the source for class
+	    <code> Darkseid</code> seen previously :
+    </p>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-				<p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-				</p>
-			</div>
-		</div>
+    <code gist-embed data-gist-id="'e85a1d560986dc5c3fa62d8831ed514d'" data-gist-line="'12-25'"></code>
+
+    <p>Here we have class
+	    <code> Darkeid</code> listed as a public class. Here we have to consider two things.
+    </p>
+    <ol>
+	    <li>We cannot have more than two public classes in the same package.</li>
+	    <li>The file must have the same name as the public class.</li>
+    </ol>
+    <p>The reason for this seemingly arbitrary scheme is that&nbsp; it is assumed that only the public class shall be accessed externally, hence rest of the classes are 'internal' classes which are used internally. This seems intuitive as when no access specifier like 
+	    <code>public</code> or 
+	    <code>private</code> are present , the default acess specifier is applied. It provides only package level visibility, that is you cannot use the class in other packages.
+    </p>
+    <p>However say we have another source file declared under the same package, it can have its own public class as shown below.</p>
+
+    <code gist-embed data-gist-id="'e85a1d560986dc5c3fa62d8831ed514d'" data-gist-line="'26-36'"></code>
+    
+    
+</div>
+
