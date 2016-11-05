@@ -1,4 +1,4 @@
-var app = angular.module('mywebsite',['ngRoute','custom-gist-embed']);
+var app = angular.module('mywebsite',['ngRoute','another-angular-gist-embed']);
 
 app.config(function($routeProvider){
 	
@@ -18,4 +18,5 @@ app.config(function($routeProvider){
 		    }
 		});
 });
+
 
