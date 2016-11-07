@@ -6,7 +6,7 @@
 		},
 	"general" :
 		{
-		"numPosts" : 1, 
+		"numPosts" : 3, 
 		"templatesLocation" : "html/general/posts/"
 		}
 }

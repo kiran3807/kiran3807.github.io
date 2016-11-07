@@ -1,4 +1,4 @@
-app.directive('kTemplate',['$compile','infScroll','$document','$window','configService','$rootScope',function($compile,infScroll,$document,$window,configService,$rootScope){
+app.directive('kTemplate',['$compile','infScroll','$document','$window','configService','$rootScope','$q',function($compile,infScroll,$document,$window,configService,$rootScope,$q){
 	
 	var ddo = {};
 	//both element and window are jquery elements
@@ -36,6 +36,18 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 			endDiv.before(errMsg);
 		}
 		
+		var loadInitPosts = function(result) {
+		    console.log("Recurse!");
+		    infScrollSuccess(result);
+	        if( isEndVisible(endDiv,angular.element($window)) ){
+			    var promise = infScroll.getTemplate(config.templatesLocation+scope.postIndex+".html");
+				scope.postIndex--;
+				promise.then(loadInitPosts,infScrollFailure);
+		    }else {
+		        return
+		    }
+	    }
+	    
 		scope.postIndex = config.numPosts;
 		if(scope.postIndex < 1){
 			var msg = "<p>No posts to display</p>";
@@ -43,9 +55,9 @@ app.directive('kTemplate',['$compile','infScroll','$document','$window','configS
 			return;
 		}
 		if( isEndVisible(endDiv,angular.element($window)) ){
-			var promise = infScroll.getTemplate(config.templatesLocation+scope.postIndex+".html");
-				scope.postIndex--;
-				promise.then(infScrollSuccess,infScrollFailure);
+	        var promise = infScroll.getTemplate(config.templatesLocation+scope.postIndex+".html");
+		    scope.postIndex--;
+			promise.then(loadInitPosts,infScrollFailure);
 		}
 		$document.on('scroll',function(){
 			if(scope.postIndex < 1){
