@@ -113,6 +113,8 @@ tags: nonPost
     <p>Did fashion heavens whence the <em>Devas</em> reside<br>
     And such was will of <em>Rtam</em> even gods so must abide</p>
     
+    <p style="font-size:10px"> Copyright &copy; 2017 by Kiran yallabandi, all rights reserved </p>
+    
     {% if site.google_analytics %}
       <script type="text/javascript">
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
