@@ -2,10 +2,10 @@
 ---
 @font-face {
  font-family: "aniron";
- src: url("/fonts/aniron/aniron.regular.ttf") format("truetype");
- src: url("/fonts/aniron/aniron.regular.eot") format("embedded-opentype");
- src: url("/fonts/aniron/aniron.regular.woff") format("woff");
- src: url("/fonts/aniron/aniron.regular.svg") format("svg");
+ src: url("{{ site.baseurl }}/assets/css/fonts/aniron/aniron.regular.ttf") format("truetype");
+ src: url("{{ site.baseurl }}/assets/css/fonts/aniron/aniron.regular.eot") format("embedded-opentype");
+ src: url("{{ site.baseurl }}/assets/css/fonts/aniron/aniron.regular.woff") format("woff");
+ src: url("{{ site.baseurl }}/assets/css/fonts/aniron/aniron.regular.svg") format("svg");
 }
 html { 
   background: url('{{ site.baseurl }}/assets/img/canto-1.jpg') no-repeat center center fixed; 
