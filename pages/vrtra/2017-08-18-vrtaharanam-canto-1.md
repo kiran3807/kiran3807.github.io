@@ -26,14 +26,14 @@ tags: nonPost
     <h2>The story of Indra and the dragon.</h2>
     <h3><Canto 1 : Theogony - Dawn of the gods</h3>
     
-    <p>Before the time the mighty <em>Bharatas</em> ruled.<br>
+    <p>Before the <em>Suryavansh</em> did enjoy it's noon.<br>
     Before the time men gazed upon the moon.</p>
     
     <p>Before the time the <em>Ashvins</em> rode across the sky<br>
     Before the dawn of truth and t’was veiled by lie</p>
     
     <p>The seed of creation emerged in primal mind<br>
-    Came forth cosmic ocean from endless void</p>
+    Came forth the cosmic ocean from the void asthough t'was seined</p>
     
     <p>With being, non being asunder so came<br>
     The eternal <em>Rtam</em>, rendering cosmos tame</p>
