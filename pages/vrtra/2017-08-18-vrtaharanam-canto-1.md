@@ -1,5 +1,5 @@
 ---
-title: Vrtraharnam-canto-1
+title: Vrtrahan-canto-1
 permalink: /vrtraharnam/canto-1 
 layout: null
 tags: nonPost
