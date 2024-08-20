@@ -1,2 +1,4 @@
-const placeholder = document.getElementById('placeholder');
-placeholder.innerText = "Hello from placeholder!";
+document.addEventListener("DOMContentLoaded", (event)=> {
+    const placeholder = document.querySelector('#placeholder');
+    placeholder.innerText = "Hello from placeholder!";
+});
