@@ -27,15 +27,15 @@ jobs:
             ${{ runner.os }}-
 
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        working-directory: ./app
+        working-directory: ./webapp
         name: List the state of node modules
         continue-on-error: true
         run: npm list
 
       - name: Install dependencies
-        working-directory: ./app
+        working-directory: ./webapp
         run: npm install
 
       - name: Build
-        working-directory: ./app
+        working-directory: ./webapp
         run: npm run build
