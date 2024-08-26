@@ -1,0 +1,16 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "personal webiste for thoughts and utilities",
+  "scripts": {
+    "build": "node clear-dir.js --dirs angular-app && npm --prefix ./angular-app run build && npm run copy",
+    "copy": "cp ./angular-app/dist/angular-app/browser/* .",
+    "serve": "http-server -p 8000"
+  },
+  "author": "Kiran Yallabandi",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "yargs": "^17.7.2"
+  }
+}
